@@ -16,6 +16,13 @@ module.exports = {
         roboto: ["var(--font-roboto)"],
         sarabun: ["var(--font-sarabun)"],
       },
+        colors: {
+          grayLow: "#F2F2F2",
+          graynormal: "#44494D",
+          grayMedium: "#B5B4B4",
+          primaryRed: "#EE0033",
+          black: "#000000",
+        }
     },
   },
   plugins: [],
