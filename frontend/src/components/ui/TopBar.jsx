@@ -3,8 +3,8 @@ import React from "react";
 
 const TopBar = () => {
   return (
-    <div className="w-full h-[24px] py-0.5  text-xs bg-gradient-to-tr from-primaryRed  to-red-400 text-white">
-      <div className="max-w-screen-xl mx-auto ">
+    <div className="hidden lg:block w-full h-[24px]   text-xs bg-gradient-to-tr from-primaryRed  to-red-400 text-white">
+      <div className="max-w-screen-xl mx-auto px-4 pt-1">
         <div className="w-full h-full flex items-center justify-end gap-2">
           <p
             className="px-2 border-r-[1px] border-grayLow 

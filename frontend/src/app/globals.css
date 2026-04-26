@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cst_btn {
+    @apply m-2 px-8 py-2 font-medium bg-grayLow text-graynormal rounded-md mt-4 shadow hover:scale-105  active:scale-100  transition-transform duration-300;
+}
+.cst_btn-icon {
+    @apply flex items-center justify-center gap-2 m-2 px-6 py-2 font-medium border text-graynormal  rounded-md mt-4 shadow hover:scale-105  active:scale-100 transition-transform duration-300;
+}
+
+.cst_btn-disabled {
+    @apply m-2 px-8 py-2 font-medium bg-grayMedium  text-grayLow opacity-40 cursor-not-allowed rounded-md mt-4 shadow hover:scale-105  active:scale-100 transition-transform duration-300;
+}
+.cst_btn-disabled-icon {
+    @apply flex items-center justify-center gap-2 m-2 px-6 py-2 font-medium bg-grayMedium  text-grayLow opacity-40 cursor-not-allowed rounded-md mt-4 shadow hover:scale-105  active:scale-100 transition-transform duration-300;
+}
+
+.cst_btn-primary {
+    @apply m-2 px-8 py-2 font-medium bg-primaryRed  text-white rounded-md mt-4 shadow hover:scale-105 active:scale-100  transition-transform duration-300;
+}
+.cst_btn-primary-icon {
+    @apply flex items-center justify-center gap-2 m-2 px-6 py-2  font-medium bg-primaryRed  text-white rounded-md mt-4 shadow hover:scale-105  active:scale-100 transition-transform duration-300;
+}
