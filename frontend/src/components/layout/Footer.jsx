@@ -1,7 +1,5 @@
-// File: components/Footer.jsx
-
 import {
-  Globe,
+  CardSim,
   Mail,
   MapPin,
   MessageCircleQuestionMark,
@@ -43,16 +41,16 @@ const socialArr = [
 ];
 
 const serviceArr = [
-  { name: "Di động 5G", icon: Globe, link: "#" },
-  { name: "Internet", icon: Rss, link: "#" },
-  { name: "Truyền hình số", icon: TvMinimal, link: "#" },
-  { name: "Chữ ký số", icon: PencilLine, link: "#" },
+  { name: "Internet", icon: Rss, link: "/internet" },
+  { name: "Truyền hình", icon: TvMinimal, link: "/television" },
+  { name: "Di động", icon: CardSim, link: "/sim" },
+  { name: "Chữ ký số", icon: PencilLine, link: "/" },
 ];
 
 const supportArr = [
-  { name: "Tra cứu cước", icon: Search, link: "#" },
-  { name: "Báo hỏng dịch vụ", icon: ShieldAlert, link: "#" },
-  { name: "Câu hỏi thường gặp", icon: MessageCircleQuestionMark, link: "#" },
+  { name: "Tra cứu cước", icon: Search, link: "/search" },
+  { name: "Báo hỏng dịch vụ", icon: ShieldAlert, link: "/contact" },
+  { name: "Câu hỏi thường gặp", icon: MessageCircleQuestionMark, link: "/question" },
 ];
 
 function MenuList({ items }) {
@@ -65,7 +63,7 @@ function MenuList({ items }) {
           <li key={item.name}>
             <Link
               href={item.link}
-              className="flex items-center gap-2 transition-all hover:text-primaryRed"
+              className="flex items-center gap-2 transition-all hover:text-primary"
             >
               <Icon size={16} />
               <span>{item.name}</span>
@@ -79,7 +77,7 @@ function MenuList({ items }) {
 
 function Footer() {
   return (
-    <footer className="mt-10 text-graynormal border-t-[1px] border-grayLow pt-10 ">
+    <footer className="mt-10 text-grayNormal border-t-[1px] border-grayLow pt-10 ">
       <div className="mx-auto max-w-7xl px-4 lg:px-0">
         <div className="mb-16 grid gap-12 md:grid-cols-4">
           <div className="space-y-6">
@@ -92,7 +90,7 @@ function Footer() {
             />
 
             <p className="text-justify text-sm leading-relaxed">
-              <span className="font-magistral text-primaryRed">
+              <span className="font-magistral text-primary">
                 Viettel Lạng Sơn
               </span>{" "}
               cung cấp các dịch vụ: internet cáp quang, truyền hình, các dịch vụ
@@ -101,34 +99,34 @@ function Footer() {
           </div>
 
           <div>
-            <h5 className="mb-6 font-bold text-primaryRed">Dịch vụ</h5>
+            <h5 className="mb-6 font-bold text-primary">Dịch vụ</h5>
             <MenuList items={serviceArr} />
           </div>
 
           <div>
-            <h5 className="mb-6 font-bold text-primaryRed">
+            <h5 className="mb-6 font-bold text-primary">
               Hỗ trợ khách hàng
             </h5>
             <MenuList items={supportArr} />
           </div>
 
           <div>
-            <h5 className="mb-6 font-bold text-primaryRed">Liên hệ</h5>
+            <h5 className="mb-6 font-bold text-primary">Liên hệ</h5>
 
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <MapPin size={20} className="shrink-0 text-primaryRed" />
+                <MapPin size={20} className="shrink-0 text-primary" />
                 <span>
                   Số 422, đường Hùng Vương, phường Đông Kinh, TP. Lạng Sơn
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail size={20} className="shrink-0 text-primaryRed" />
+                <Mail size={20} className="shrink-0 text-primary" />
                 <span>cskh.viettells@gmail.com</span>
               </li>
 
               <li className="flex items-center gap-3">
-                <PhoneCall size={20} className="shrink-0 text-primaryRed" />
+                <PhoneCall size={20} className="shrink-0 text-primary" />
                 <span>0205 6250 178</span>
               </li>
             </ul>
@@ -139,7 +137,7 @@ function Footer() {
       <div className="mx-auto flex max-w-screen-xl flex-col-reverse items-center gap-4 border-t py-2 text-center text-xs text-grayMedium sm:flex-row sm:justify-between">
         <p>
           &copy; 2026{" "}
-          <span className="font-magistral text-primaryRed">
+          <span className="font-magistral text-primary">
             Viettel Lạng Sơn
           </span>
           . All Rights Reserved

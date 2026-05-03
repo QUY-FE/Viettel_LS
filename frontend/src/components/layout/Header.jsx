@@ -14,6 +14,10 @@ import {
   X,
   TvMinimal,
   Rss,
+  CardSim,
+  UserPlus,
+  Flag,
+  PencilLine,
 } from "lucide-react";
 import TopBar from "../ui/TopBar";
 
@@ -23,16 +27,18 @@ const navList = [
     icon: <Package size={18} />,
     href: "/products",
   },
-  { name: "Internet", icon: <Rss size={18} />, href: "/serv" },
-  { name: "Truyền hình", icon: <TvMinimal size={18} />, href: "/services" },
-  { name: "Tin tức & sự kiện", icon: <Newspaper size={18} />, href: "/news" },
-  { name: "Liên hệ", icon: <PhoneCall size={18} />, href: "/contact" },
+  { name: "Internet", icon: <Rss size={18} />, href: "/internet" },
+  { name: "Truyền hình", icon: <TvMinimal size={18} />, href: "/television" },
+  { name: "Di động", icon: <CardSim size={18} />, href: "/sim" },
+  { name: "Chữ ký số", icon: <PencilLine size={18} />, href: "/" },
+  { name: "Tin tức", icon: <Newspaper size={18} />, href: "/news" },
 ];
 
 const actionList = [
-  { name: "Ngôn ngữ", href: "/", icon: null },
-  { name: "Tuyển dụng", href: "/", icon: null },
   { name: "Giao diện", href: "/2", icon: <Moon size={16} /> },
+  { name: "Ngôn ngữ", href: "/", icon: <Flag size={16} /> },
+  { name: "Tuyển dụng", href: "/", icon: <UserPlus size={16} /> },
+  { name: "Liên hệ", icon: <PhoneCall size={18} />, href: "/contact" },
 ];
 
 const Header = () => {
@@ -59,7 +65,7 @@ const Header = () => {
             <Image
               src="/LogoviettelLS.png"
               alt="logo viettel lạng sơn"
-              width={260}
+              width={180}
               height={60}
               className="object-contain"
               priority
@@ -74,8 +80,8 @@ const Header = () => {
                     href={route.href}
                     className={`flex items-center justify-center gap-1 w-full h-full text-sm transition-colors ${
                       path === route.href
-                        ? "text-primaryRed font-semibold"
-                        : "text-graynormal hover:text-primaryRed"
+                        ? "text-primary font-semibold"
+                        : "text-grayNormal hover:text-primary"
                     }`}
                   >
                     {route.icon && <span className="mr-1">{route.icon}</span>}
@@ -89,15 +95,15 @@ const Header = () => {
           <div className="flex items-center justify-end gap-2">
             <Link
               href="/search"
-              className=" py-2 px-2 flex items-center gap-2 text-xs rounded-full bg-grayLow shadow hover:shadow-md"
+              className=" py-2 px-2 flex items-center gap-2 text-xs rounded-full bg-grayLow shadow hover:scale-105 transition-transform "
             >
               <Search size={20} />
-              Bạn cần tìm gì?
+              Tìm kiếm ?
             </Link>
 
             <div className="relative" ref={menuRef}>
               <button
-                className="p-2 rounded-full hover:bg-grayLow flex items-center justify-center transition-colors"
+                className="p-2 rounded-full hover:bg-grayLow hover:scale-105 transition-transform flex items-center justify-center "
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -111,14 +117,14 @@ const Header = () => {
                 }`}
               >
                 <div className="lg:hidden border-b border-grayLow py-2">
-                  <ul className="text-graynormal">
+                  <ul className="text-grayNormal">
                     {navList.map((route, index) => (
                       <li key={index}>
                         <Link
                           href={route.href}
                           className={`flex items-center px-4 py-3 text-sm hover:bg-grayLow ${
                             path === route.href
-                              ? "text-primaryRed font-semibold bg-gray-50"
+                              ? "text-primary font-semibold bg-gray-50"
                               : ""
                           }`}
                         >
@@ -133,7 +139,7 @@ const Header = () => {
                 </div>
 
                 <div className="py-2">
-                  <ul className="text-graynormal">
+                  <ul className="text-grayNormal">
                     {actionList.map((action, index) => (
                       <li key={index}>
                         <Link

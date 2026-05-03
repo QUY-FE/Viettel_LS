@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${magistral.variable} ${beauSans.variable} ${roboto.variable} ${sarabun.variable} font-roboto`}
+      className={`${magistral.variable} ${beauSans.variable} ${roboto.variable} ${sarabun.variable} font-roboto text-grayNormal`}
     >
       <body>
         <Header />

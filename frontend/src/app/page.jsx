@@ -1,6 +1,7 @@
 import Banner from "#/components/ui/Banner";
-import { ChevronRight, Wifi, Calendar } from "lucide-react";
+import { ChevronRight, Wifi, Calendar, Box, Smartphone } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HomePage() {
   const news = [
@@ -29,22 +30,22 @@ export default function HomePage() {
       <Banner />
 
       <div className="my-8">
-        <h1 className="my-4 text-center text-2xl text-graynormal">
-          <span className="text-3xl font-magistral text-primaryRed font-bold">
+        <h1 className="my-4 text-center text-2xl text-grayNormal">
+          <span className="text-3xl font-magistral text-primary font-bold">
             Viettel{" "}
           </span>
           Lạng Sơn
         </h1>
-        <p className="text-center text-xl text-graynormal">
+        <p className="text-center text-xl text-grayNormal">
           Nhà cung cấp dịch vụ di động, internet, truyền hình và giải pháp công
           nghệ thông tin
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow p-8 border-t-4 border-primaryRed">
+      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-shadow p-8 border-t-4 border-primary">
           <div className="bg-red-50 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-            <Wifi className="text-primaryRed" size={32} />
+            <Wifi className="text-primary" size={32} />
           </div>
           <h3 className="text-xl font-bold text-[#000000] mb-2">
             Dịch vụ Internet
@@ -52,7 +53,7 @@ export default function HomePage() {
           <p className="text-[#44494D] text-sm mb-4">
             Tốc độ cao, mượt mà mọi trải nghiệm. Tặng kèm Modem Wifi 6 hiện đại.
           </p>
-          <div className="text-2xl font-bold text-primaryRed mb-6">
+          <div className="text-2xl font-bold text-primary mb-6">
             Từ 165.000đ
             <span className="text-sm text-[#B5B4B4] font-normal">/tháng</span>
           </div>
@@ -60,17 +61,58 @@ export default function HomePage() {
             Xem chi tiết
             <ChevronRight size={20} />
           </button>
+
+
+          
         </div>
-      </div>
+      </div> */}
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 p-8 border-t-4 border-primary transform hover:-translate-y-1">
+              <div className="bg-red-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                <Wifi className="text-primary" size={32} />
+              </div>
+              <h3 className="text-xl font-bold text-[#000000] mb-3">Internet Cáp Quang</h3>
+              <p className="text-[#44494D] text-sm mb-6 leading-relaxed">Tốc độ siêu phàm, mượt mà mọi trải nghiệm. Tặng kèm Modem Wifi 6 hiện đại phủ sóng toàn bộ ngôi nhà.</p>
+              <div className="text-3xl font-bold text-primary mb-8">Từ 165k<span className="text-sm text-[#B5B4B4] font-normal">/tháng</span></div>
+              <button className="w-full border-2 border-primary text-primary py-3 rounded-xl font-bold hover:bg-primary hover:text-white transition-colors">
+                Đăng ký ngay
+              </button>
+            </div>
+
+            <div className="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 p-8 border-t-4 border-primary transform hover:-translate-y-1">
+              <div className="bg-red-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                <Smartphone className="text-primary" size={32} />
+              </div>
+              <h3 className="text-xl font-bold text-[#000000] mb-3">Gói Cước Di Động 5G</h3>
+              <p className="text-[#44494D] text-sm mb-6 leading-relaxed">Data thả ga, gọi thoại miễn phí. Phủ sóng 4G/5G 100% các xã tại Lạng Sơn. Tốc độ kết nối vượt trội.</p>
+              <div className="text-3xl font-bold text-primary mb-8">Từ 90k<span className="text-sm text-[#B5B4B4] font-normal">/tháng</span></div>
+              <button className="w-full border-2 border-primary text-primary py-3 rounded-xl font-bold hover:bg-primary hover:text-white transition-colors">
+                Mua Sim / Gói cước
+              </button>
+            </div>
+
+            <div className="bg-white rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 p-8 border-t-4 border-primary transform hover:-translate-y-1">
+              <div className="bg-red-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+                <Box className="text-primary" size={32} />
+              </div>
+              <h3 className="text-xl font-bold text-[#000000] mb-3">Smart Home & Camera</h3>
+              <p className="text-[#44494D] text-sm mb-6 leading-relaxed">Giải pháp an ninh và nhà thông minh toàn diện bảo vệ gia đình bạn 24/7. Dễ dàng quản lý qua ứng dụng.</p>
+              <div className="text-3xl font-bold text-primary mb-8">Từ 490k<span className="text-sm text-[#B5B4B4] font-normal">/thiết bị</span></div>
+              <button className="w-full border-2 border-primary text-primary py-3 rounded-xl font-bold hover:bg-primary hover:text-white transition-colors">
+                Xem chi tiết
+              </button>
+            </div>
+          </div>
 
       <div className="mt-16 mb-12">
         <div className="my-8 flex items-center justify-between">
-          <h1 className="my-4 text-center text-3xl font-magistral text-primaryRed font-bold">
+          <h1 className="my-4 text-center text-3xl font-magistral text-primary font-bold">
             Tin tức nổi bật
           </h1>
-          <button className="cst_btn-primary-icon">
+          <Link href="/news" className="cst_btn-primary-icon">
             Xem tất cả <ChevronRight size={20} />
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -89,7 +131,7 @@ export default function HomePage() {
                 <Calendar size={14} />
                 <span>{item.date}</span>
               </div>
-              <h3 className="font-bold text-lg text-graynormal group-hover:text-primaryRed transition-colors line-clamp-2">
+              <h3 className="font-bold text-lg text-grayNormal group-hover:text-primary transition-colors line-clamp-2">
                 {item.title}
               </h3>
             </div>
