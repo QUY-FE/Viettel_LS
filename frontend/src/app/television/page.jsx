@@ -61,7 +61,7 @@ const TelevisionPage = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
   return (
-    <div className="max-w-7xl mx-auto min-h-screen mt-4">
+    <div className="max-w-7xl mx-auto min-h-screen mt-4 px-2 lg:px-4">
       <div className="w-full h-[30vh] bg-grayMedium rounded-lg shadow-lg">Image</div>
 
       <h1 className="my-4 font-bold text-3xl text-center">
@@ -134,7 +134,7 @@ const TelevisionPage = () => {
         Các câu hỏi thường gặp về dịch vụ truyền hình Viettel TV
       </h3>
 
-      <div className="space-y-4">
+      <div className="space-y-4 mb-4">
         {faqData.map((item, index) => (
           <div
             key={index}

@@ -14,20 +14,14 @@ const ProductPage = () => {
   return (
     <>
       <div className="bg-[#F2F2F2] min-h-screen py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold text-[#000000] mb-4">
-            Sản phẩm & Dịch vụ
-          </h1>
-          <p className="text-lg text-[#44494D] mb-12">
-            Khám phá các giải pháp công nghệ viễn thông hàng đầu dành cho bạn và
-            gia đình.
-          </p>
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          
 
           {/* Category: Internet */}
           <div className="mb-16">
-            <div className="flex items-center mb-8">
+            <div className="flex items-center mb-4 lg:mb-8">
               <Wifi className="text-[#EE0033] mr-3" size={28} />
-              <h2 className="text-2xl font-bold text-[#000000]">
+              <h2 className="text-xl lg:text-2xl font-bold text-[#000000]">
                 Internet & Truyền Hình
               </h2>
             </div>
@@ -39,7 +33,7 @@ const ProductPage = () => {
               ].map((plan, i) => (
                 <div
                   key={plan}
-                  className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-white rounded-2xl p-4 lg:p-6 shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-lg font-bold text-[#000000]">{plan}</h3>
@@ -64,7 +58,7 @@ const ProductPage = () => {
                     </li>
                   </ul>
                   <div className="border-t border-gray-100 pt-4">
-                    <div className="text-2xl font-bold text-[#EE0033] mb-4">
+                    <div className="text-2xl font-bold text-[#EE0033]">
                       {165 + i * 30}.000đ
                       <span className="text-sm text-[#B5B4B4] font-normal">
                         /tháng
@@ -72,7 +66,7 @@ const ProductPage = () => {
                     </div>
                     <button
                       onClick={() => handleOpen(plan)}
-                      className="w-full bg-[#EE0033] text-white py-2 rounded-xl font-medium hover:bg-red-700 transition-colors"
+                      className="w-full cst_btn-secondary mt-2 lg:mt-4"
                     >
                       Đăng ký mua
                     </button>
@@ -84,9 +78,9 @@ const ProductPage = () => {
 
           {/* Category: Mobile */}
           <div>
-            <div className="flex items-center mb-8">
+            <div className="flex items-center mb-4 lg:mb-8">
               <Smartphone className="text-[#EE0033] mr-3" size={28} />
-              <h2 className="text-2xl font-bold text-[#000000]">
+              <h2 className="text-xl lg:text-2xl font-bold text-[#000000]">
                 Gói cước Di động 4G/5G
               </h2>
             </div>
@@ -102,7 +96,7 @@ const ProductPage = () => {
                   <h3 className="text-xl font-black text-[#EE0033] mb-2">
                     {plan}
                   </h3>
-                  <div className="text-3xl font-bold text-[#000000] mb-4">
+                  <div className="text-3xl font-bold text-[#000000]">
                     {90 + i * 30}K
                     <span className="text-base text-[#44494D] font-normal">
                       /tháng
@@ -118,7 +112,7 @@ const ProductPage = () => {
                   </ul>
                   <button
                     onClick={() => handleOpen(plan)}
-                    className="w-full border border-[#EE0033] text-[#EE0033] group-hover:bg-[#EE0033] group-hover:text-white py-2 rounded-xl font-medium transition-colors"
+                    className="cst_btn-secondary w-full mt-2 lg:mt-4"
                   >
                     Đăng ký
                   </button>

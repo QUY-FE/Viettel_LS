@@ -15,7 +15,7 @@ export default function BaseModal({ open, onClose, title, children }) {
       {/* modal */}
       <div className="relative bg-white rounded-2xl p-6 w-full max-w-md z-10">
         {title && (
-          <h3 className="text-lg font-semibold mb-4 text-primary">
+          <h3 className="text-center text-lg font-semibold mb-4 text-primary">
             {title}
           </h3>
         )}

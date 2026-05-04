@@ -4,10 +4,10 @@ import React, { useState } from "react";
 const SimPage = () => {
   const [activeTab, setActiveTab] = useState("prepaid");
   return (
-    <div className="max-w-7xl mx-auto min-h-screen mt-4">
+    <div className="max-w-7xl mx-auto min-h-screen mt-4 px-2 lg:px-4">
       <div className="w-full h-[30vh] bg-grayMedium rounded-lg my-4"></div>
 
-      <div className="hidden sm:flex space-x-2 justify-between items-center mt-4 border-b pb-4 ">
+      <div className=" sm:flex space-x-2 justify-between items-center mt-4 border-b pb-4 ">
       <h1 className="my-4 font-bold text-3xl text-center">
         Sim
         <span className="font-magistral text-primary"> Viettel</span>

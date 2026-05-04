@@ -19,11 +19,11 @@ export default function SupportForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4">
+    <div className="min-h-screen bg-gray-50 py-10  px-2 lg:px-4">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
         {/* FORM */}
-        <div className="bg-white p-6 rounded-2xl shadow">
-          <h2 className="text-2xl font-semibold mb-6 text-primary">
+        <div className="bg-white  p-4 lg:p-6 rounded-2xl shadow">
+          <h2 className="text-center lg:text-left text-2xl font-semibold mb-6 text-primary">
             Liên hệ hỗ trợ
           </h2>
 
@@ -87,16 +87,16 @@ export default function SupportForm() {
             </div>
 
             {/* Buttons */}
-            <div className="flex gap-3">
-              <button className="cst_btn-primary px-6 py-2 rounded-lg">
-                Gửi
-              </button>
+            <div className="flex items-center justify-between lg:justify-end lg:gap-4">
               <button
                 type="button"
                 className="cst_btn px-6 py-2 rounded-lg"
                 onClick={() => window.history.back()}
               >
                 Quay lại
+              </button>
+              <button className="cst_btn-primary px-6 py-2 rounded-lg">
+                Gửi
               </button>
             </div>
           </form>

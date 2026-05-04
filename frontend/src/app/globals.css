@@ -7,22 +7,35 @@ html {
 }
 
 .cst_btn {
-    @apply m-2 px-8 py-2 font-medium bg-grayLow text-grayNormal rounded-md mt-4 shadow hover:scale-105  active:scale-100  transition-transform duration-300;
+    @apply  px-8 py-2 font-semibold bg-grayLow border-2 border-grayLow text-grayNormal rounded-xl  shadow hover:scale-105  active:scale-95   transition-transform duration-300;
 }
 .cst_btn-icon {
-    @apply flex items-center justify-center gap-2 m-2 px-6 py-2 font-medium border text-grayNormal  rounded-md mt-4 shadow hover:scale-105  active:scale-100 transition-transform duration-300;
+    @apply flex items-center justify-center gap-2  px-6 py-2 font-semibold border border-grayLow text-grayNormal  rounded-xl  shadow hover:scale-105  active:scale-95  transition-transform duration-300;
 }
 
 .cst_btn-disabled {
-    @apply m-2 px-8 py-2 font-medium bg-grayMedium  text-grayLow opacity-40 cursor-not-allowed rounded-md mt-4 shadow hover:scale-105  active:scale-100 transition-transform duration-300;
+    @apply  px-8 py-2 font-semibold bg-grayMedium  text-grayLow opacity-40 cursor-not-allowed rounded-xl  shadow hover:scale-105  active:scale-95  transition-transform duration-300;
 }
 .cst_btn-disabled-icon {
-    @apply flex items-center justify-center gap-2 m-2 px-6 py-2 font-medium bg-grayMedium  text-grayLow opacity-40 cursor-not-allowed rounded-md mt-4 shadow hover:scale-105  active:scale-100 transition-transform duration-300;
+    @apply flex items-center justify-center gap-2  px-6 py-2 font-semibold bg-grayMedium  text-grayLow opacity-40 cursor-not-allowed rounded-xl  shadow hover:scale-105  active:scale-95  transition-transform duration-300;
 }
 
+.cst_btn-secondary {
+    @apply  px-8 py-2 font-semibold text-primary border-[1px] border-primary rounded-xl  shadow-lg 
+           hover:bg-primary hover:text-white 
+           active:scale-95 
+           transition-colors duration-300 ease-in-out;
+}
+
+.cst_btn-secondary-icon{
+    @apply flex items-center justify-center gap-2  px-6 py-2 font-semibold text-primary border-[1px] border-primary rounded-xl  shadow-lg 
+           hover:bg-primary hover:text-white 
+           active:scale-95 
+           transition-colors duration-300 ease-in-out;
+}
 .cst_btn-primary {
-    @apply m-2 px-8 py-2 font-medium bg-primary  text-white rounded-md mt-4 shadow hover:scale-105 active:scale-100  transition-transform duration-300;
+    @apply  px-8 py-2 font-semibold bg-primary border-[1px] border-primary text-white rounded-xl  shadow hover:scale-105 active:scale-95   transition-transform duration-300;
 }
 .cst_btn-primary-icon {
-    @apply flex items-center justify-center gap-2 m-2 px-6 py-2  font-medium bg-primary  text-white rounded-md mt-4 shadow hover:scale-105  active:scale-100 transition-transform duration-300;
+    @apply flex items-center justify-center gap-2  px-6 py-2  font-semibold bg-primary border-[1px] border-primary text-white rounded-xl  shadow hover:scale-105  active:scale-95  transition-transform duration-300;
 }
