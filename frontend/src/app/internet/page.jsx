@@ -1,4 +1,12 @@
-import { MonitorPlay, ShieldCheck, Wifi, Zap } from "lucide-react";
+import Breadcrumb from "#/components/ui/Breadcrumb";
+import {
+  Info,
+  MonitorPlay,
+  PackageCheck,
+  ShieldCheck,
+  Wifi,
+  Zap,
+} from "lucide-react";
 import React from "react";
 
 const MockData = [
@@ -19,17 +27,22 @@ const MockData = [
   },
 ];
 
+
 const page = () => {
+  const breadcrumbItems = [
+      { label: "Internet", href: "/internet" },
+    ];
   return (
     <div className="max-w-7xl mx-auto min-h-screen px-2 lg:px-4">
-      <div className="w-full h-[30vh] bg-grayMedium rounded-lg shadow-lg my-4 border-b border-grayMedium flex items-center justify-center">
-        Đăng ký Internet cho ngôi nhà của bạn
-      </div>
+      <Breadcrumb items={breadcrumbItems} />
 
       <h1 className="my-4 font-bold text-3xl text-center">
         Internet
         <span className="font-magistral text-primary"> Viettel</span>
       </h1>
+      <p className="my-4 font-bold text-xl text-center">
+        Các gói cước tốc độ cao, tích hợp giải pháp Mesh wifi
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
         {MockData.map((item) => (
@@ -57,18 +70,19 @@ const page = () => {
               </li>
             </ul>
             <div className="text-2xl font-bold text-primary mb-2">
-              Từ {item.price.toLocaleString()}đ
+              Chỉ {item.price.toLocaleString()}.000đ
               <span className="text-sm text-[#B5B4B4] font-normal">/tháng</span>
             </div>
             <div className="w-full flex items-center justify-around mb-2 lg:mb-4">
-            <button className="cst_btn-secondary">Chi tiết</button>
-            <button className="cst_btn-primary">Đăng ký</button>
-
+              <button className="cst_btn-secondary-icon">
+                Chi tiết <Info size={20} />
+              </button>
+              <button className="cst_btn-primary-icon">
+                Đăng ký <PackageCheck size={20} />
+              </button>
             </div>
           </div>
         ))}
-
-        
       </div>
     </div>
   );

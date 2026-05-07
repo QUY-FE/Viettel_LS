@@ -1,6 +1,22 @@
 "use client";
-import { ChevronDown } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Info,
+  PackageCheck,
+  TabletSmartphone,
+  TvMinimal,
+  TvMinimalPlay,
+} from "lucide-react";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Breadcrumb from "#/components/ui/Breadcrumb";
 
 const faqData = [
   {
@@ -54,15 +70,83 @@ const faqData = [
   },
 ];
 
+const MockData = [
+  {
+    _id: "1",
+    type: "television",
+    name: "TV360 - Giải trí",
+    features: [
+      "+130 kênh truyền hình",
+      "Miễn phí cước data khi xem trên di động",
+      "Tích hợp các app youtube,spotify,netflix...",
+    ],
+    price: 20,
+    description: "",
+    slug: "tv360-giai-tri",
+    image: "",
+    totalBuy: 0,
+  },
+  {
+    _id: "2",
+    type: "television",
+    name: "TV360 - Giải trí",
+    features: [
+      "+130 kênh truyền hình",
+      "Miễn phí cước data khi xem trên di động",
+      "Tích hợp các app youtube,spotify,netflix...",
+    ],
+    price: 20,
+    description: "",
+    slug: "tv360-giai-tri",
+    image: "",
+    totalBuy: 0,
+  },
+  {
+    _id: "3",
+    type: "television",
+    name: "TV360 - Giải trí",
+    features: [
+      "+130 kênh truyền hình",
+      "Miễn phí cước data khi xem trên di động",
+      "Tích hợp các app youtube,spotify,netflix...",
+    ],
+    price: 20,
+    description: "",
+    slug: "tv360-giai-tri",
+    image: "",
+    totalBuy: 0,
+  },
+  {
+    _id: "4",
+    type: "television",
+    name: "TV360 - Giải trí",
+    features: [
+      "+130 kênh truyền hình",
+      "Miễn phí cước data khi xem trên di động",
+      "Tích hợp các app youtube,spotify,netflix...",
+    ],
+    price: 20,
+    description: "",
+    slug: "tv360-giai-tri",
+    image: "",
+    totalBuy: 0,
+  },
+];
+
 const TelevisionPage = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [prevEl, setPrevEl] = useState(null);
+  const [nextEl, setNextEl] = useState(null);
 
   const toggleItem = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
+const breadcrumbItems = [
+      { label: "Truyền hình", href: "/television" },
+    ];
   return (
-    <div className="max-w-7xl mx-auto min-h-screen mt-4 px-2 lg:px-4">
-      <div className="w-full h-[30vh] bg-grayMedium rounded-lg shadow-lg">Image</div>
+    <div className="max-w-7xl mx-auto min-h-screen  px-2 lg:px-4">
+      <Breadcrumb items={breadcrumbItems} />
 
       <h1 className="my-4 font-bold text-3xl text-center">
         Truyền Hình{" "}
@@ -103,7 +187,6 @@ const TelevisionPage = () => {
           video âm nhạc, nhạc mp3 phong phú và được cập nhật liên tục.
         </li>
         <li>
-          {" "}
           Biến TV thường thành TV thông minh: khách hàng có thể tự cài đặt thêm
           hàng ngàn ứng dụng từ kho ứng dụng Google Play như Youtube, Facebook
           Watch, ứng dụng xem phim Online, nghe nhạc, đọc báo, chơi game…
@@ -114,7 +197,6 @@ const TelevisionPage = () => {
       </h3>
       <ul className="list-disc list-inside">
         <li>
-          {" "}
           Đường truyền internet cáp quang Viettel: khách hàng có thể đăng ký
           đồng thời combo dịch vụ internet cáp quang + truyền hình Viettel TV
           hoặc đăng ký thêm dịch vụ truyền hình Viettel TV trên đường truyền
@@ -125,10 +207,88 @@ const TelevisionPage = () => {
           sang truyền hình.
         </li>
       </ul>
-      <h3 className="my-4 font-bold text-xl">
-        Gói cước khuyến mãi đăng ký lắp đặt dịch vụ truyền hình Viettel TV
-      </h3>
-      <div className="w-full h-[30vh] bg-grayMedium rounded-lg">API </div>
+
+      <div className="flex flex-col md:flex-row md:items-center justify-between my-4 mt-8 gap-4">
+        <h3 className="font-bold text-xl">
+          Gói cước khuyến mãi đăng ký lắp đặt dịch vụ truyền hình Viettel TV
+        </h3>
+
+        <div className="flex items-center gap-2 self-end md:self-auto">
+          <button
+            ref={(node) => setPrevEl(node)}
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors duration-300 shadow disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            ref={(node) => setNextEl(node)}
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 hover:bg-primary hover:text-white transition-colors duration-300 shadow disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ChevronRight size={24} />
+          </button>
+        </div>
+      </div>
+
+      <div className="mb-10">
+        <Swiper
+          modules={[Pagination, Autoplay, Navigation]}
+          spaceBetween={20}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          navigation={{ prevEl, nextEl }}
+          breakpoints={{
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="pb-12"
+        >
+          {MockData.map((item) => (
+            <SwiperSlide key={item._id} className="pb-4 pt-2">
+              <div className="h-full rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 px-4 pt-6 pb-2 border-t-4 border-primary transform flex flex-col bg-white">
+                <div className="bg-red-50 p-2 rounded-xl flex items-center justify-center gap-2 mb-4 text-primary">
+                  <h3 className="text-xl font-bold font-magistral">
+                    {item.name}
+                  </h3>
+                </div>
+
+                <ul className="space-y-3 my-4 text-sm flex-grow">
+                  <li className="flex items-center gap-1 lg:gap-2">
+                    <TvMinimal size={16} className="flex-shrink-0 text-green-400" />
+                    <span>{item.features[0]}</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <TabletSmartphone size={16} className="flex-shrink-0 text-green-400" />
+                    <span>{item.features[1]}</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <TvMinimalPlay size={16} className="flex-shrink-0 text-green-400" />
+                    <span>{item.features[2]}</span>
+                  </li>
+                </ul>
+
+                <div className="text-2xl font-bold text-primary mb-2 mt-auto">
+                  Chỉ {item.price.toLocaleString()}.000đ
+                  <span className="text-sm text-[#B5B4B4] font-normal">
+                    /tháng
+                  </span>
+                </div>
+
+                <div className="w-full flex items-center justify-end gap-2 lg:gap-4 mb-2 lg:mb-4">
+                  <button className="cst_btn-secondary-icon flex items-center">
+                    Chi tiết <Info size={20} className="ml-1" />
+                  </button>
+                  <button className="cst_btn-primary-icon flex items-center">
+                    Đăng ký <PackageCheck size={20} className="ml-1" />
+                  </button>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      <button className="cst_btn-primary mb-10">Tư vấn miễn phí</button>
+
 
       <h3 className="my-4 font-bold text-xl">
         Các câu hỏi thường gặp về dịch vụ truyền hình Viettel TV
@@ -144,7 +304,12 @@ const TelevisionPage = () => {
               onClick={() => toggleItem(index)}
               className="w-full flex items-center gap-3 text-left p-4 bg-gray-100 hover:bg-gray-200 transition font-semibold"
             >
-              <ChevronDown size={20} />
+              <ChevronDown
+                size={20}
+                className={`transition-transform duration-300 ${
+                  activeIndex === index ? "rotate-180" : ""
+                }`}
+              />
               {item.question}
             </button>
 
@@ -159,7 +324,6 @@ const TelevisionPage = () => {
         ))}
       </div>
 
-      <button className="cst_btn-primary">Tư vấn miễn phí</button>
     </div>
   );
 };

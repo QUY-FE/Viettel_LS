@@ -10,6 +10,7 @@ import {
   Mail,
   PhoneCall,
 } from "lucide-react";
+import Breadcrumb from "#/components/ui/Breadcrumb";
 
 export default function SupportForm() {
   const { register, handleSubmit } = useForm();
@@ -19,8 +20,9 @@ export default function SupportForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10  px-2 lg:px-4">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+    <div className="max-w-6xl mx-auto  min-h-screen px-2 lg:px-4">
+        <Breadcrumb items={[{ label: "Liên hệ hỗ trợ", href: "/contact" }]} />
+      <div className="grid md:grid-cols-2 gap-8">
         {/* FORM */}
         <div className="bg-white  p-4 lg:p-6 rounded-2xl shadow">
           <h2 className="text-center lg:text-left text-2xl font-semibold mb-6 text-primary">

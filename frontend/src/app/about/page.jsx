@@ -1,7 +1,27 @@
-import { Link2, Mail, MapPin, PhoneCall, StickyNote } from "lucide-react";
-import React from "react";
+"use client";
+import { Link2, Mail, MapPin, PhoneCall, StickyNote, X } from "lucide-react";
+import React, { useState } from "react";
 import Link from "next/link";
-const page = () => {
+import Image from "next/image";
+
+const imgArr = [
+  `/trusofull.jpg`,
+  `/trusofull2.jpg`,
+  `/trusogocnghieng.jpg`,
+  `/trusotang1.jpg`,
+];
+
+const About = () => {
+  const [imgOpen, setImgOpen] = useState(null);
+
+  const handleImageClick = (index) => {
+    setImgOpen(index);
+  };
+
+  const handleCloseImage = () => {
+    setImgOpen(null);
+  };
+
   return (
     <>
       <div className="max-w-[900px] mx-auto min-h-screen px-2">
@@ -55,7 +75,50 @@ const page = () => {
           </p>
         </div>
 
-        <div className="w-full h-[220px] lg:w-[600px] lg:h-[400px] mx-auto bg-gray-50 rounded-lg my-8">ảnh mô tả</div>
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 my-8">
+          {imgArr.map((imgSrc, index) => (
+            <div
+              key={index}
+              onClick={() => handleImageClick(imgSrc)}
+              className="relative w-full h-[180px] lg:h-[220px] overflow-hidden rounded-xl shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+            >
+              <Image
+                src={imgSrc}
+                alt={`viettel-image-${index}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+
+        {imgOpen && (
+          <div
+            onClick={handleCloseImage}
+            className="fixed inset-0 z-[1000] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-5xl w-full h-[70vh] sm:h-[80vh] lg:h-[85vh] rounded-xl overflow-hidden bg-white/5"
+            >
+              <button
+                onClick={handleCloseImage}
+                className="absolute top-4 right-4 z-10 text-white bg-black/50 rounded-full p-2.5 hover:bg-black/80 hover:scale-105 transition-all"
+              >
+                <X size={28} />
+              </button>
+
+              <Image
+                src={imgOpen}
+                alt="preview-image"
+                fill
+                sizes="100vw"
+                className="object-contain"
+              />
+            </div>
+          </div>
+        )}
       </div>
       <div className="max-w-7xl mx-auto sm:flex items-center mt-10 p-4">
         <ul className="sm:w-1/2">
@@ -84,7 +147,11 @@ const page = () => {
           <li className="py-2 flex items-center justify-start gap-2 lg:text-base text-sm">
             <Link2 size={18} />
             Website:{" "}
-            <Link href="https://facebook.com" target="_blank" className="block hover:underline text-primary ">
+            <Link
+              href="https://facebook.com"
+              target="_blank"
+              className="block hover:underline text-primary "
+            >
               https://viettellangson.vn
             </Link>
           </li>
@@ -103,4 +170,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default About;

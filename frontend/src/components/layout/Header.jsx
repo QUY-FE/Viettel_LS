@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Moon,
   Package,
   PhoneCall,
   Search,
@@ -15,7 +14,6 @@ import {
   Rss,
   CardSim,
   UserPlus,
-  Flag,
   PencilLine,
   Clock4,
   Info,
@@ -23,7 +21,7 @@ import {
 import TopBar from "../ui/TopBar";
 
 const navList = [
-  { name: "Sản phẩm dịch vụ", icon: <Package size={18} />, href: "/products" },
+  { name: "Sản phẩm dịch vụ", icon: <Package  size={18} />, href: "/products" },
   { name: "Internet", icon: <Rss size={18} />, href: "/internet" },
   { name: "Truyền hình", icon: <TvMinimal size={18} />, href: "/television" },
   { name: "Di động", icon: <CardSim size={18} />, href: "/sim" },
@@ -32,9 +30,7 @@ const navList = [
 ];
 
 const actionList = [
-  { name: "Giao diện", href: "/", icon: <Moon size={16} /> },
-  { name: "Ngôn ngữ", href: "/", icon: <Flag size={16} /> },
-  { name: "Tuyển dụng", href: "/", icon: <UserPlus size={16} /> },
+  { name: "Tuyển dụng", href: "/tuyendung", icon: <UserPlus size={16} /> },
   { name: "Liên hệ", icon: <PhoneCall size={18} />, href: "/contact" },
 ];
 
@@ -290,7 +286,7 @@ const Header = () => {
                         <Link
                           onClick={() => setIsMenuOpen(false)}
                           href={action.href}
-                          className="flex items-center px-4 py-3 text-sm hover:bg-grayLow"
+                          className="flex items-center px-4 py-3 text-sm hover:bg-grayLow "
                         >
                           {action.icon && <span className="mr-3">{action.icon}</span>}
                           {action.name}

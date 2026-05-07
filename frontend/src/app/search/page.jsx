@@ -1,5 +1,6 @@
 "use client";
 
+import Breadcrumb from "#/components/ui/Breadcrumb";
 import {
   Search,
   MapPin,
@@ -52,6 +53,10 @@ const tabs = [
   { key: "product", icon: PackageSearch, label: "Sản phẩm & Dịch vụ" },
 ];
 
+const breadcrumbItems = [
+  { label: "Tìm kiếm", href: "/search" },
+]
+
 export default function Page() {
   const [tab, setTab] = useState("store");
   const [query, setQuery] = useState("");
@@ -62,8 +67,9 @@ export default function Page() {
       : "Nhập tên đường, phường/xã, quận/huyện...";
 
   return (
-    <main className="min-h-screen relative overflow-hidden mt-4 px-2 lg:px-4">
-      <div className="max-w-6xl mx-auto rounded-2xl sm:rounded-[28px] bg-[#f4f4f4]/95 shadow-2xl overflow-hidden">
+    <main className="max-w-6xl mx-auto min-h-screen relative overflow-hidden mt-4 px-2 lg:px-4">
+      <Breadcrumb items={breadcrumbItems} />
+      <div className=" rounded-2xl sm:rounded-[28px] bg-[#f4f4f4]/95 shadow-2xl overflow-hidden">
         <div className="flex flex-col lg:grid lg:grid-cols-[340px_1fr] min-h-0 lg:min-h-[620px]">
           {/* ── Sidebar / Tab nav ── */}
           <aside className="bg-[#ececec] p-3 sm:p-7 lg:p-7">

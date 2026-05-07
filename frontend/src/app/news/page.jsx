@@ -1,10 +1,15 @@
 import React from "react";
 import Image from "next/image";
-import { Eye, EyeClosed } from "lucide-react";
+import { Eye } from "lucide-react";
+import Breadcrumb from "#/components/ui/Breadcrumb";
 
 const page = () => {
+  const breadcrumbItems = [
+      { label: "Tin tức", href: "/news" },
+    ]
   return (
     <div className="max-w-7xl mx-auto min-h-screen px-2 lg:px-4 mt-4">
+      <Breadcrumb items={breadcrumbItems} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[
           {
