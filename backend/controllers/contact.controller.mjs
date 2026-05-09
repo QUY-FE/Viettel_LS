@@ -1,4 +1,4 @@
-import Contact from "../models/Contact.mjs";
+import Contact from "../models/contact.model.mjs";
 import rateLimit from "express-rate-limit";
 
 // Rate limit: mỗi IP chỉ được 10 request / phút cho contact

@@ -20,11 +20,13 @@ app.use(
 app.use(morgan("dev"));
 
 // routes
-import contactRoutes from "./routes/contactRoutes.mjs";
-import userRoutes from "./routes/userRoutes.mjs";
-
+import contactRoutes from "./routes/contact.routes.mjs";
+import userRoutes from "./routes/user.routes.mjs";
+import productRoutes from "./routes/product.routes.mjs";
 app.use("/api/users", userRoutes);
 app.use("/api/contacts", contactRoutes);
+app.use("/api/products", productRoutes);
+
 
 
 connectDatabase();

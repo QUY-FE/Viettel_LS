@@ -6,7 +6,7 @@ import {
   updateContact,
   deleteContact,
   contactLimiter,
-} from "../controllers/contactController.mjs";
+} from "../controllers/contact.controller.mjs";
 
 const router = express.Router();
 
