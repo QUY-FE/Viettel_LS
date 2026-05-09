@@ -33,7 +33,7 @@ const ProductPage = () => {
         {/* Category: Internet */}
         <div className="mb-16">
           <div className="flex items-center mb-4 lg:mb-8">
-            <Wifi className="text-[#EE0033] mr-3" size={28} />
+            <Wifi className="text-primary mr-3" size={28} />
             <h2 className="text-xl lg:text-2xl font-bold text-[#000000]">
               Internet & Truyền Hình
             </h2>
@@ -51,7 +51,7 @@ const ProductPage = () => {
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-lg font-bold text-[#000000]">{plan}</h3>
                   {i === 2 && (
-                    <span className="bg-[#EE0033] text-white text-xs px-2 py-1 rounded font-medium">
+                    <span className="bg-primary text-white text-xs px-2 py-1 rounded font-medium">
                       Bán chạy
                     </span>
                   )}
@@ -71,7 +71,7 @@ const ProductPage = () => {
                   </li>
                 </ul>
                 <div className="border-t border-gray-100 pt-4">
-                  <div className="text-2xl font-bold text-[#EE0033]">
+                  <div className="text-2xl font-bold text-primary">
                     {165 + i * 30}.000đ
                     <span className="text-sm text-[#B5B4B4] font-normal">
                       /tháng
@@ -92,7 +92,7 @@ const ProductPage = () => {
         {/* Category: Mobile */}
         <div>
           <div className="flex items-center mb-4 lg:mb-8">
-            <Smartphone className="text-[#EE0033] mr-3" size={28} />
+            <Smartphone className="text-primary mr-3" size={28} />
             <h2 className="text-xl lg:text-2xl font-bold text-[#000000]">
               Gói cước Di động 4G/5G
             </h2>
@@ -101,12 +101,12 @@ const ProductPage = () => {
             {["V90B", "MXH120", "V200B", "5G150"].map((plan, i) => (
               <div
                 key={plan}
-                className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#EE0033] transition-colors relative overflow-hidden group"
+                className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-primary transition-colors relative overflow-hidden group"
               >
                 <div className="absolute top-0 right-0 bg-[#F2F2F2] text-[10px] font-bold px-3 py-1 rounded-bl-lg text-[#44494D]">
                   DATA & THOẠI
                 </div>
-                <h3 className="text-xl font-black text-[#EE0033] mb-2">
+                <h3 className="text-xl font-black text-primary mb-2">
                   {plan}
                 </h3>
                 <div className="text-3xl font-bold text-[#000000]">
@@ -137,7 +137,7 @@ const ProductPage = () => {
         {/* Category: Technology News */}
         <div className="my-4">
           <div className="flex items-center mb-4 lg:mb-8">
-            <MonitorSmartphone className="text-[#EE0033] mr-3" size={28} />
+            <MonitorSmartphone className="text-primary mr-3" size={28} />
             <h2 className="text-xl lg:text-2xl font-bold text-black">
               Sản phẩm công nghệ
             </h2>
@@ -173,7 +173,7 @@ const ProductPage = () => {
                   {news.title}
                 </h3>
 
-                <p className="text-lg font-bold text-[#EE0033] mb-2">
+                <p className="text-lg font-bold text-primary mb-2">
                   {news.price}.000đ
                 </p>
                 <div className="w-full flex items-center justify-around mb-2 lg:mb-4">

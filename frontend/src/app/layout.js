@@ -1,14 +1,13 @@
 import { Roboto, Sarabun } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "#/components/layout/Header";
-import Footer from "#/components/layout/Footer";
+import WrapperClient from "#/components/common/WapperClient.jsx";
 
 // font
 const magistral = localFont({
   src: [
     {
-      path: "./fonts/FS-Magistral/FS-Magistral-Medium.ttf", // Thay đổi đúng tên file của bạn
+      path: "./fonts/FS-Magistral/FS-Magistral-Medium.ttf", 
       weight: "400",
       style: "normal",
     },
@@ -18,7 +17,7 @@ const magistral = localFont({
       style: "normal",
     },
   ],
-  variable: "--font-magistral", // Biến CSS để dùng với Tailwind
+  variable: "--font-magistral",
 });
 
 const beauSans = localFont({
@@ -44,15 +43,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  
   return (
     <html
       lang="en"
       className={`${magistral.variable} ${beauSans.variable} ${roboto.variable} ${sarabun.variable} font-roboto text-grayNormal`}
     >
       <body>
-        <Header />
-        {children}
-        <Footer />
+         <WrapperClient>
+           {children}
+         </WrapperClient>
       </body>
     </html>
   );

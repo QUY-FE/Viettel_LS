@@ -17,7 +17,7 @@ export default function ContactModal({ open, onClose, product }) {
   return (
     <BaseModal open={open} onClose={onClose} title="Liên hệ tư vấn">
       
-      <p className="text-[#EE0033] font-bold mb-4">
+      <p className="text-primary font-bold mb-4">
         {product}
       </p>
 
