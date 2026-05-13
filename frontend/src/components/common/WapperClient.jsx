@@ -1,12 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
 import { usePathname } from "next/navigation";
-
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const WrapperClient = ({ children }) => {
   const pathname = usePathname();
-
+  const [queryClient] = useState(() => new QueryClient());
   const decoration =
     pathname === "/admin" ||
     pathname === "/admin/dashboard" ||
@@ -21,9 +21,11 @@ const WrapperClient = ({ children }) => {
     pathname.startsWith("/blog/");
   return (
     <>
-      {decoration ? null : <Header />}
-      <main>{children}</main>
-      {decoration ? null : <Footer />}
+      <QueryClientProvider client={queryClient}>
+        {decoration ? null : <Header />}
+        <main>{children}</main>
+        {decoration ? null : <Footer />}
+      </QueryClientProvider>
     </>
   );
 };

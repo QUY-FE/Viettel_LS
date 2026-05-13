@@ -2,12 +2,13 @@ import { Roboto, Sarabun } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import WrapperClient from "#/components/common/WapperClient.jsx";
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 // font
 const magistral = localFont({
   src: [
     {
-      path: "./fonts/FS-Magistral/FS-Magistral-Medium.ttf", 
+      path: "./fonts/FS-Magistral/FS-Magistral-Medium.ttf",
       weight: "400",
       style: "normal",
     },
@@ -43,16 +44,17 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  
   return (
     <html
       lang="en"
       className={`${magistral.variable} ${beauSans.variable} ${roboto.variable} ${sarabun.variable} font-roboto text-grayNormal`}
+      suppressHydrationWarning
     >
-      <body>
-         <WrapperClient>
-           {children}
-         </WrapperClient>
+      <body suppressHydrationWarning>
+        <WrapperClient>
+          {children}
+          <ToastContainer />
+        </WrapperClient>
       </body>
     </html>
   );

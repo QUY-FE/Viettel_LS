@@ -5,7 +5,8 @@ const productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      trim: true,
+      enum: ["internet", "television", "mobile"],
+      default: "internet",
     },
     nameProduct: {
       type: String,
@@ -33,10 +34,6 @@ const productSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
-    image: {
-      type: String,
-      default: "",
-    },
     totalBuy: {
       type: Number,
       default: 0,
@@ -49,8 +46,9 @@ const productSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Hoạt Động", "Tạm Ngưng", "Ngừng Kinh Doanh"],
-      default: "Hoạt Động",
+      required: true,
+      enum: ["Hoạt động", "Tạm ngưng", "Ngừng kinh doanh"],
+      default: "Hoạt động",
     },
   },
   {

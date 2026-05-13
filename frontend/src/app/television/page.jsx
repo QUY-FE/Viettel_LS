@@ -1,5 +1,6 @@
 "use client";
 import {
+  Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -17,6 +18,16 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Breadcrumb from "#/components/ui/Breadcrumb";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import Image from "next/image";
+
+const fetchTelevisionProducts = async () => {
+  const res = await axios.get("http://localhost:5000/api/products");
+  return res.data.data.filter(
+    (item) => item.category === "television" && item.status === "Hoạt động",
+  );
+};
 
 const faqData = [
   {
@@ -70,70 +81,16 @@ const faqData = [
   },
 ];
 
-const MockData = [
-  {
-    _id: "1",
-    type: "television",
-    name: "TV360 - Giải trí",
-    features: [
-      "+130 kênh truyền hình",
-      "Miễn phí cước data khi xem trên di động",
-      "Tích hợp các app youtube,spotify,netflix...",
-    ],
-    price: 20,
-    description: "",
-    slug: "tv360-giai-tri",
-    image: "",
-    totalBuy: 0,
-  },
-  {
-    _id: "2",
-    type: "television",
-    name: "TV360 - Giải trí",
-    features: [
-      "+130 kênh truyền hình",
-      "Miễn phí cước data khi xem trên di động",
-      "Tích hợp các app youtube,spotify,netflix...",
-    ],
-    price: 20,
-    description: "",
-    slug: "tv360-giai-tri",
-    image: "",
-    totalBuy: 0,
-  },
-  {
-    _id: "3",
-    type: "television",
-    name: "TV360 - Giải trí",
-    features: [
-      "+130 kênh truyền hình",
-      "Miễn phí cước data khi xem trên di động",
-      "Tích hợp các app youtube,spotify,netflix...",
-    ],
-    price: 20,
-    description: "",
-    slug: "tv360-giai-tri",
-    image: "",
-    totalBuy: 0,
-  },
-  {
-    _id: "4",
-    type: "television",
-    name: "TV360 - Giải trí",
-    features: [
-      "+130 kênh truyền hình",
-      "Miễn phí cước data khi xem trên di động",
-      "Tích hợp các app youtube,spotify,netflix...",
-    ],
-    price: 20,
-    description: "",
-    slug: "tv360-giai-tri",
-    image: "",
-    totalBuy: 0,
-  },
-];
-
 const TelevisionPage = () => {
+  const {
+    data: products = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["television-products"],
+    queryFn: fetchTelevisionProducts,
+  });
   const [activeIndex, setActiveIndex] = useState(null);
   const [prevEl, setPrevEl] = useState(null);
   const [nextEl, setNextEl] = useState(null);
@@ -141,9 +98,7 @@ const TelevisionPage = () => {
   const toggleItem = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-const breadcrumbItems = [
-      { label: "Truyền hình", href: "/television" },
-    ];
+  const breadcrumbItems = [{ label: "Truyền hình", href: "/television" }];
   return (
     <div className="max-w-7xl mx-auto min-h-screen  px-2 lg:px-4">
       <Breadcrumb items={breadcrumbItems} />
@@ -208,6 +163,12 @@ const breadcrumbItems = [
         </li>
       </ul>
 
+      <div className="flex items-center justify-center my-8 overflow-hidden rounded-lg">
+          <Image src="/boxtv360.jpg" alt="box tv360" width={800} height={600}  className="" />
+      </div>
+      <p className="text-center">box tv360</p>
+
+
       <div className="flex flex-col md:flex-row md:items-center justify-between my-4 mt-8 gap-4">
         <h3 className="font-bold text-xl">
           Gói cước khuyến mãi đăng ký lắp đặt dịch vụ truyền hình Viettel TV
@@ -239,47 +200,53 @@ const breadcrumbItems = [
           navigation={{ prevEl, nextEl }}
           breakpoints={{
             768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
+            1024: { slidesPerView:3  },
           }}
           className="pb-12"
         >
-          {MockData.map((item) => (
-            <SwiperSlide key={item._id} className="pb-4 pt-2">
-              <div className="h-full rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 px-4 pt-6 pb-2 border-t-4 border-primary transform flex flex-col bg-white">
-                <div className="bg-red-50 p-2 rounded-xl flex items-center justify-center gap-2 mb-4 text-primary">
-                  <h3 className="text-xl font-bold font-magistral">
-                    {item.name}
-                  </h3>
+          {products.map((item) => (
+            <SwiperSlide key={item._id} className="pb-20 pt-2">
+              <div
+                key={item._id || item.slug}
+                className="w-full max-w-sm rounded-2xl bg-white p-8 shadow-xl ring-1 ring-gray-200 transition-all hover:shadow-2xl"
+              >
+                <h3 className="text-3xl font-bold tracking-tight text-primary font-magistral">
+                  {item.nameProduct}
+                </h3>
+
+                <div className="mt-4 flex items-baseline text-2xl font-extrabold tracking-tight text-gray-900">
+                  {item.price?.toLocaleString()}.000đ<span>/Tháng</span>
                 </div>
 
-                <ul className="space-y-3 my-4 text-sm flex-grow">
-                  <li className="flex items-center gap-1 lg:gap-2">
-                    <TvMinimal size={16} className="flex-shrink-0 text-green-400" />
-                    <span>{item.features[0]}</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TabletSmartphone size={16} className="flex-shrink-0 text-green-400" />
-                    <span>{item.features[1]}</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <TvMinimalPlay size={16} className="flex-shrink-0 text-green-400" />
-                    <span>{item.features[2]}</span>
-                  </li>
+                <ul className="mt-8 space-y-4 text-sm leading-6 text-gray-600">
+                  {item.features.length > 0 ? (
+                    item.features.map((feature, index) => (
+                      <li key={index} className="flex gap-x-3">
+                        <Check
+                          className="h-6 w-5 flex-none text-primary"
+                          aria-hidden="true"
+                        />
+                        <span>{feature}</span>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="">Không có tính năng nào được liệt kê.</li>
+                  )}
                 </ul>
 
-                <div className="text-2xl font-bold text-primary mb-2 mt-auto">
-                  Chỉ {item.price.toLocaleString()}.000đ
-                  <span className="text-sm text-[#B5B4B4] font-normal">
-                    /tháng
-                  </span>
-                </div>
-
-                <div className="w-full flex items-center justify-end gap-2 lg:gap-4 mb-2 lg:mb-4">
-                  <button className="cst_btn-secondary-icon flex items-center">
-                    Chi tiết <Info size={20} className="ml-1" />
+                <div className="mt-8 flex gap-3">
+                  <button
+                    onClick={() => onLearnMore(item)}
+                    className="cst_btn-secondary-icon"
+                  >
+                    Xem thêm
                   </button>
-                  <button className="cst_btn-primary-icon flex items-center">
-                    Đăng ký <PackageCheck size={20} className="ml-1" />
+
+                  <button
+                    onClick={() => onSubscribe(item)}
+                    className="cst_btn-primary-icon"
+                  >
+                    Đăng ký
                   </button>
                 </div>
               </div>
@@ -287,8 +254,15 @@ const breadcrumbItems = [
           ))}
         </Swiper>
       </div>
-      <button className="cst_btn-primary mb-10">Tư vấn miễn phí</button>
 
+      {isLoading && <div className="text-center py-8">Đang tải dữ liệu...</div>}
+      {isError && (
+        <div className="text-center text-red-500 py-8">
+          {error?.message || "Có lỗi xảy ra khi tải dữ liệu."}
+        </div>
+      )}
+
+      <button className="cst_btn-primary mb-10">Tư vấn miễn phí</button>
 
       <h3 className="my-4 font-bold text-xl">
         Các câu hỏi thường gặp về dịch vụ truyền hình Viettel TV
@@ -323,7 +297,6 @@ const breadcrumbItems = [
           </div>
         ))}
       </div>
-
     </div>
   );
 };

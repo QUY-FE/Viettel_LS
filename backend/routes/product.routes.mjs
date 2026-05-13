@@ -31,8 +31,8 @@ router.use(apiLimiter);
 router.get('/', getProducts);
 router.get('/:id', getProductById);
 
-router.post('/', strictLimiter, createProduct);
-router.put('/:id', strictLimiter, updateProduct);
-router.delete('/:id', strictLimiter, deleteProduct);
+router.post('/create-product', strictLimiter, createProduct);
+router.put('/edit/:id', strictLimiter, updateProduct);
+router.delete('/delete/:id', strictLimiter, deleteProduct);
 
 export default router;
