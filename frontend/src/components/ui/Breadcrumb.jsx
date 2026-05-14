@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, House } from "lucide-react";
 
 
 const Breadcrumb = ({ items }) => {
@@ -12,7 +12,8 @@ const Breadcrumb = ({ items }) => {
       <nav aria-label="Breadcrumb" className="relative z-10">
         <ol className="flex items-center gap-2 text-sm md:text-base ">
           <li>
-            <Link href="/" className="hover:text-primary transition-colors">
+            <Link href="/" className="hover:text-primary transition-colors flex items-center gap-1">
+            <House size={16}/>
               Trang chủ
             </Link>
           </li>

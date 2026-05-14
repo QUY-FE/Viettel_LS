@@ -16,7 +16,7 @@ export const contactLimiter = rateLimit({
 // CREATE
 export const createContact = async (req, res) => {
   try {
-    const { name, phone, address, problem, another } = req.body;
+    const { name, phone, address, problem, another, status } = req.body;
 
     const newContact = new Contact({
       name,
@@ -24,6 +24,7 @@ export const createContact = async (req, res) => {
       address,
       problem,
       another,
+      status,
     });
 
     const saved = await newContact.save();

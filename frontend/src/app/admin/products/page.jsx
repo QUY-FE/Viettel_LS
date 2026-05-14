@@ -216,14 +216,14 @@ const ProductsPage = () => {
                         </button>
 
                         <Link
-                          href={`/admin/products/edit/${product._id}`}
+                          href={`/admin/products/edit/${product.slug}`}
                           className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
                         >
                           <MdEdit size={18} />
                         </Link>
 
                         <button
-                          onClick={() => handleDeleteProduct(product._id)}
+                          onClick={() => handleDeleteProduct(product.slug)}
                           className="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors"
                         >
                           <MdDelete size={18} />

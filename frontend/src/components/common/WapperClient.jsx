@@ -16,6 +16,7 @@ const WrapperClient = ({ children }) => {
     pathname === "/admin/users" ||
     pathname === "/admin/users/create" ||
     pathname === "/admin/products/create" ||
+    pathname.startsWith("/admin/orders/") ||
     pathname.startsWith("/admin/products/edit/") ||
     pathname.startsWith("/admin/products/") ||
     pathname.startsWith("/blog/");

@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ["internet", "television", "mobile"],
+      enum: ["internet&television", "internet", "television", "mobile"],
       default: "internet",
     },
     nameProduct: {

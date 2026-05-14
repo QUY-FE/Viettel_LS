@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Package,
   PhoneCall,
   Search,
   Menu,
@@ -21,7 +20,6 @@ import {
 import TopBar from "../ui/TopBar";
 
 const navList = [
-  { name: "Sản phẩm dịch vụ", icon: <Package  size={18} />, href: "/products" },
   { name: "Internet", icon: <Rss size={18} />, href: "/internet" },
   { name: "Truyền hình", icon: <TvMinimal size={18} />, href: "/television" },
   { name: "Di động", icon: <CardSim size={18} />, href: "/sim" },

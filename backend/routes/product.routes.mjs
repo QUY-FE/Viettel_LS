@@ -26,13 +26,13 @@ const strictLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-router.use(apiLimiter);
+// router.use(apiLimiter);
 
 router.get('/', getProducts);
-router.get('/:id', getProductById);
+router.get('/:slug', getProductById);
 
 router.post('/create-product', strictLimiter, createProduct);
-router.put('/edit/:id', strictLimiter, updateProduct);
-router.delete('/delete/:id', strictLimiter, deleteProduct);
+router.put('/edit/:slug', strictLimiter, updateProduct);
+router.delete('/delete/:slug', strictLimiter, deleteProduct);
 
 export default router;
