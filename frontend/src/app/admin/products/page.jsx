@@ -17,8 +17,6 @@ import {
 } from "react-icons/md";
 import useDebounce from "#/hooks/useDebounce";
 
-
-
 const fetchProducts = async () => {
   const res = await axios.get("http://localhost:5000/api/products");
   return res.data.data;
@@ -30,19 +28,12 @@ const deleteProduct = async (id) => {
 
 const ProductsPage = () => {
   const queryClient = useQueryClient();
-
   const [selectedProduct, setSelectedProduct] = useState(null);
-
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 800);
-
   const [itemOffset, setItemOffset] = useState(0);
-
   const itemsPerPage = 8;
-
-  /**
-   * React Query
-   */
+  
   const {
     data: products = [],
     isLoading,
@@ -52,9 +43,7 @@ const ProductsPage = () => {
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
-  /**
-   * Delete Mutation
-   */
+  
   const deleteMutation = useMutation({
     mutationFn: deleteProduct,
     onSuccess: () => {
@@ -64,14 +53,18 @@ const ProductsPage = () => {
     },
   });
 
- 
   const filteredProducts = useMemo(() => {
     const searchTerm = (debouncedSearchTerm ?? "").toLowerCase();
 
     return products.filter((product) => {
-      const nameMatch = (product?.name ?? "").toLowerCase().includes(searchTerm);
-      const idMatch = (product?.id ?? "").toString().toLowerCase().includes(searchTerm);
-      
+      const nameMatch = (product?.name ?? "")
+        .toLowerCase()
+        .includes(searchTerm);
+      const idMatch = (product?.id ?? "")
+        .toString()
+        .toLowerCase()
+        .includes(searchTerm);
+
       return nameMatch || idMatch;
     });
   }, [products, debouncedSearchTerm]);
@@ -99,17 +92,12 @@ const ProductsPage = () => {
     setItemOffset(0);
   };
 
-  
-
-  
-
   const handleDeleteProduct = async (id) => {
     const confirmed = confirm("Bạn có chắc chắn muốn xóa sản phẩm này?");
 
     if (!confirmed) return;
 
     deleteMutation.mutate(id);
-
   };
 
   if (isLoading) {
@@ -128,19 +116,11 @@ const ProductsPage = () => {
     );
   }
 
-  
-
-  
-  
-
   return (
     <div className="flex flex-col gap-6 relative">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-800">Quản lý Sản phẩm</h1>
-        <Link
-          href="/admin/products/create"
-          className="cst_btn-secondary-icon"
-        >
+        <Link href="/admin/products/create" className="cst_btn-secondary-icon">
           <MdAdd size={20} />
           Thêm sản phẩm
         </Link>
@@ -198,8 +178,8 @@ const ProductsPage = () => {
                           product.status === "Hoạt động"
                             ? "bg-green-100 text-green-700"
                             : product.status === "Tạm ngưng"
-                            ? "bg-yellow-100 text-yellow-700"
-                            : "bg-red-100 text-red-700"
+                              ? "bg-yellow-100 text-yellow-700"
+                              : "bg-red-100 text-red-700"
                         }`}
                       >
                         {product.status}

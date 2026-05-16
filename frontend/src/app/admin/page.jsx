@@ -1,8 +1,12 @@
 "use client";
+import axios from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const AdminLogin = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -14,8 +18,32 @@ const AdminLogin = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/users/admin-login",
+        data,
+        {
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+
+      const auth = res.data;
+      if (auth.token) {
+        localStorage.setItem("token", auth.token);
+        setTimeout(() => {
+          localStorage.removeItem("token");
+          toast.info("Hết hạn truy cập, hãy đăng nhập lại");
+          router.push("/admin");
+        }, 3600 * 1000);
+
+        toast.success("Đăng nhập thành công");
+        router.push("/admin/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Đăng nhập thất bại");
+    }
   };
 
   return (
@@ -64,10 +92,6 @@ const AdminLogin = () => {
               type="password"
               {...register("password", {
                 required: "Vui lòng nhập password",
-                minLength: {
-                  value: 6,
-                  message: "Mật khẩu phải có ít nhất 6 ký tự",
-                },
               })}
               className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all ${
                 errors.password

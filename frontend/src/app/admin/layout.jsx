@@ -1,46 +1,60 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import { IoExitOutline } from "react-icons/io5";
-import { MdDashboard, MdOutlineInventory2, MdOutlineShoppingCart, MdOutlinePeopleAlt } from "react-icons/md";
-// import { toast } from "react-toastify";
+import { MdOutlineShoppingCart, MdOutlinePeopleAlt } from "react-icons/md";
+import { toast } from "react-toastify";
 import Image from "next/image";
-import { Box, ChartPie, Clock10, Clock6 } from "lucide-react";
+import { Box, ChartPie, Clock10 } from "lucide-react";
 
 export default function AdminLayout({ children }) {
   const pathname = usePathname();
-//   const router = useRouter();
+  const router = useRouter();
 
-//   useEffect(() => {
-//     const token = localStorage.getItem("token");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-//     if (!token) {
-//       router.push("/admin"); // đá về trang login
-//     }
-//   }, [pathname, router]);
+    if (!token && pathname !== "/admin") {
+      router.replace("/admin");
+      return;
+    }
+    if (token && pathname ===  "/admin" ) {
+      router.replace("/admin/dashboard");
+    }
+  }, [pathname, router]);
 
-//   const handleLogout = () => {
-//     if (!confirm("Bạn có muốn thoát ?")) return;
-//     try {
-//       localStorage.removeItem("token");
-//     } catch (error) {
-//       console.error("Logout error:", error);
-//     }
-//     toast.info("Bạn đã rời khỏi trang Admin");
-//     router.push("/");
-//   };
+  const handleLogout = () => {
+    if (!confirm("Bạn có muốn thoát ?")) return;
+    try {
+      localStorage.removeItem("token");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+    toast.info("Bạn đã rời khỏi trang Admin");
+    router.replace("/admin");
+  };
 
-  // Cập nhật menu: bổ sung icon để tăng tính chuyên nghiệp
   const menu = [
-    { name: "Dashboard", path: "/admin/dashboard", icon: <ChartPie size={20} />  },
+    {
+      name: "Dashboard",
+      path: "/admin/dashboard",
+      icon: <ChartPie size={20} />,
+    },
     { name: "Sản phẩm", path: "/admin/products", icon: <Box size={20} /> },
-    { name: "Đơn hàng", path: "/admin/orders", icon: <MdOutlineShoppingCart size={20} /> },
+    {
+      name: "Đơn hàng",
+      path: "/admin/orders",
+      icon: <MdOutlineShoppingCart size={20} />,
+    },
     { name: "Tin tức", path: "/admin/news", icon: <Clock10 size={20} /> },
-    { name: "Người dùng", path: "/admin/users", icon: <MdOutlinePeopleAlt size={20} /> },
+    {
+      name: "Người dùng",
+      path: "/admin/users",
+      icon: <MdOutlinePeopleAlt size={20} />,
+    },
   ];
 
-  // Nếu là trang login, chỉ render children với nền chuẩn
   if (pathname === "/admin") {
     return <div className="min-h-screen ">{children}</div>;
   }
@@ -54,7 +68,9 @@ export default function AdminLayout({ children }) {
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-3">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-semibold text-gray-800">Administrator</p>
+              <p className="text-sm font-semibold text-gray-800">
+                Administrator
+              </p>
               <p className="text-xs text-gray-500">Quản trị viên</p>
             </div>
             <div className="w-10 h-10 relative rounded-full border border-gray-200 p-0.5 overflow-hidden bg-white">
@@ -66,11 +82,11 @@ export default function AdminLayout({ children }) {
               />
             </div>
           </div>
-          
+
           <div className="h-6 w-px bg-gray-300 mx-2"></div>
-          
+
           <button
-            // onClick={handleLogout}
+            onClick={handleLogout}
             className="flex items-center justify-center w-10 h-10 text-gray-500 rounded-full hover:bg-red-50 hover:text-primary transition-colors"
             title="Đăng xuất"
           >

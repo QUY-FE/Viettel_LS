@@ -1,45 +1,32 @@
 "use client";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
 import { MdAdd, MdEdit, MdDelete, MdVisibility, MdClose } from "react-icons/md";
 
-const UsersPage = () => {
-  const [users, setUsers] = useState([
-    { 
-      id: 1, 
-      name: "Quản trị viên", 
-      email: "admin@viettel.com.vn", 
-      phone: "0988000111", 
-      role: "Admin", 
-      status: "Hoạt động",
-      address: "1 Tòa nhà Viettel, Hà Nội",
-      zalo: "0988000111",
-      facebook: "https://facebook.com/adminviettel"
-    },
-    { 
-      id: 2, 
-      name: "Nguyễn Văn Khách", 
-      email: "khachhang@gmail.com", 
-      phone: "0345123456", 
-      role: "User", 
-      status: "Hoạt động",
-      address: "123 Lạng Sơn",
-      zalo: "0345123456",
-      facebook: ""
-    },
-    { 
-      id: 3, 
-      name: "Trần Spam", 
-      email: "spam123@yahoo.com", 
-      phone: "0912333444", 
-      role: "User", 
-      status: "Bị khóa",
-      address: "Không rõ",
-      zalo: "0912333444",
-      facebook: ""
-    },
-  ]);
 
+const fetchUsers = async () => {
+  const res = await axios.get("http://localhost:5000/api/users/all");
+  return res.data;
+};
+
+
+
+
+const UsersPage = () => {
+  
+  const {
+    data: users = [],
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: fetchUsers,
+  });
+
+  console.log(users)
   const [selectedUser, setSelectedUser] = useState(null);
 
   const handleOpenModal = (user) => {
@@ -54,7 +41,8 @@ const UsersPage = () => {
     <div className="flex flex-col gap-6 relative">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-800">Quản lý Người dùng</h1>
-        <Link href={"/admin/users/create"} className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
+        <Link href={"/admin/users/create"} 
+        className="cst_btn-secondary-icon">
           <MdAdd size={20} />
           Thêm người dùng
         </Link>
@@ -66,7 +54,7 @@ const UsersPage = () => {
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200 text-sm text-gray-600">
                 <th className="p-4 font-semibold">Họ tên</th>
-                <th className="p-4 font-semibold">Email</th>
+                {/* <th className="p-4 font-semibold">Email</th> */}
                 <th className="p-4 font-semibold">Số điện thoại</th>
                 <th className="p-4 font-semibold">Phân quyền</th>
                 <th className="p-4 font-semibold">Trạng thái</th>
@@ -76,11 +64,11 @@ const UsersPage = () => {
             <tbody className="divide-y divide-gray-100 text-sm text-gray-700">
               {users.map((user) => (
                 <tr key={user.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="p-4 font-medium text-gray-900">{user.name}</td>
-                  <td className="p-4">{user.email}</td>
+                  <td className="p-4 font-medium text-gray-900">{user.username}</td>
+                  {/* <td className="p-4">{user.email}</td> */}
                   <td className="p-4">{user.phone}</td>
                   <td className="p-4">
-                    <span className={`font-semibold ${user.role === "Admin" ? "text-primary" : "text-gray-600"}`}>
+                    <span className={`font-semibold ${user.role === "admin" || "Admin" ? "text-primary" : "text-gray-600"}`}>
                       {user.role}
                     </span>
                   </td>
@@ -100,12 +88,13 @@ const UsersPage = () => {
                       >
                         <MdVisibility size={18} />
                       </button>
-                      <button 
+                      <Link 
+                      href={`/admin/users/create/${user._id}`}
                         className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
                         title="Sửa"
                       >
                         <MdEdit size={18} />
-                      </button>
+                      </Link>
                       <button 
                         className="p-2 text-red-600 hover:bg-red-50 rounded-md transition-colors" 
                         title="Xóa"
@@ -137,7 +126,7 @@ const UsersPage = () => {
             <div className="space-y-4 text-sm text-gray-700">
               <div className="flex justify-between border-b border-gray-100 pb-2">
                 <span className="font-semibold">Họ và tên:</span>
-                <span className="font-medium text-gray-900">{selectedUser.name}</span>
+                <span className="font-medium text-gray-900">{selectedUser.username}</span>
               </div>
               <div className="flex justify-between border-b border-gray-100 pb-2">
                 <span className="font-semibold">Phân quyền:</span>

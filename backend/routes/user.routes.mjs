@@ -5,7 +5,8 @@ import {
     getAllUsers, 
     getUserById, 
     updateUser, 
-    deleteUser 
+    deleteUser, 
+    adminLogin
 } from "../controllers/user.controller.mjs";
 
 const router = express.Router();
@@ -25,11 +26,11 @@ const createAccountLimiter = rateLimit({
 });
 
 router.use(generalLimiter);
-
-router.post("/", createAccountLimiter, createUser);
-router.get("/", getAllUsers);
-router.get("/:id", getUserById);
-router.put("/:id", updateUser);
-router.delete("/:id", deleteUser);
+router.post("/admin-login", adminLogin)
+router.post("/create", createAccountLimiter, createUser);
+router.get("/all", getAllUsers);
+router.get("/view/:id", getUserById);
+router.put("/edit/:id", updateUser);
+router.delete("/delete/:id", deleteUser);
 
 export default router;
