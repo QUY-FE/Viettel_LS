@@ -7,6 +7,7 @@ import axios from "axios";
 import { Check, Wifi } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
+import Loading from "./Loading";
 
 const Page = () => {
   const { slug } = useParams();
@@ -48,7 +49,7 @@ const Page = () => {
         <Breadcrumb items={breadcrumbItems} />
 
         {isLoading && (
-          <div className="text-center py-8">Đang tải dữ liệu...</div>
+          <Loading />
         )}
         {isError && (
           <div className="text-center text-red-500 py-8">

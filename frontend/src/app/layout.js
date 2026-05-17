@@ -1,9 +1,10 @@
 import { Roboto, Sarabun } from "next/font/google";
+import { ToastContainer } from "react-toastify";
 import localFont from "next/font/local";
 import "./globals.css";
 import WrapperClient from "#/components/common/WapperClient.jsx";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
+import 'react-loading-skeleton/dist/skeleton.css'
 // font
 const magistral = localFont({
   src: [

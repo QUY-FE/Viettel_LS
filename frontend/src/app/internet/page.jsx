@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import ContactModal from "#/components/common/ContactModal";
+import Loading from "./Loading";
 
 const fetchInternetProducts = async () => {
   const res = await axios.get("http://localhost:5000/api/products");
@@ -39,20 +40,10 @@ const InternetPage = () => {
       <div className="max-w-7xl mx-auto min-h-screen px-2 lg:px-4">
         <Breadcrumb items={breadcrumbItems} />
 
-        <h1 className="my-4 font-bold text-3xl text-center">
-          Internet
-          <span className="font-magistral text-primary"> Viettel</span>
-        </h1>
-        <p className="my-4 font-bold text-xl text-center">
-          Các gói cước tốc độ cao, tích hợp giải pháp Mesh wifi
-        </p>
-
-        {isLoading && (
-          <div className="text-center py-8">Đang tải dữ liệu...</div>
-        )}
+        {isLoading && <Loading />}
         {isError && (
-          <div className="text-center text-red-500 py-8">
-            {error?.message || "Có lỗi xảy ra khi tải dữ liệu."}
+          <div className="text-center text-primary py-8">
+            <p>Ops, Có lỗi xảy ra khi tải dữ liệu.</p>
           </div>
         )}
 

@@ -129,14 +129,9 @@ export default function Page() {
                 </p>
               </div>
             ) : isError ? (
-              <div className="flex flex-col items-center justify-center py-24 text-center">
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50 text-red-500">
-                  <AlertCircle size={24} />
-                </div>
-                <p className="text-sm font-medium text-red-600">
-                  Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại mạng.
-                </p>
-              </div>
+              <div className="text-center text-primary py-8">
+            <p>Ops, Có lỗi xảy ra khi tải dữ liệu.</p>
+          </div>
             ) : filteredStaffs.length > 0 ? (
               <div className="space-y-4">
                 {filteredStaffs.map((item, index) => (

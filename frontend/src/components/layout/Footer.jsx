@@ -6,16 +6,17 @@ import {
   PencilLine,
   PhoneCall,
   Rss,
-  Search,
   ShieldAlert,
   TvMinimal,
+  UserPlus,
+  UserSearch,
 } from "lucide-react";
 
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-import { FaFacebook, FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaTiktok } from "react-icons/fa";
 
 const socialArr = [
   {
@@ -24,19 +25,9 @@ const socialArr = [
     link: "https://www.facebook.com/viettellsn",
   },
   {
-    name: "Instagram",
-    icon: <FaInstagram size={20} color="#e90198" />,
-    link: "https://www.instagram.com",
-  },
-  {
     name: "TikTok",
-    icon: <FaTiktok size={20} color="#000000" />,
+    icon: <FaTiktok size={16} color="#000000" />,
     link: "https://www.tiktok.com/@viettellangson",
-  },
-  {
-    name: "Youtube",
-    icon: <FaYoutube size={20} color="#ff0033" />,
-    link: "https://www.youtube.com",
   },
 ];
 
@@ -48,9 +39,10 @@ const serviceArr = [
 ];
 
 const supportArr = [
-  { name: "Tra cứu cước", icon: Search, link: "/search" },
-  { name: "Báo hỏng dịch vụ", icon: ShieldAlert, link: "/contact" },
-  { name: "Câu hỏi thường gặp", icon: MessageCircleQuestionMark, link: "/question" },
+  { name: "Tuyển dụng", link: "/tuyendung", icon: UserPlus },
+  { name: "Nhân viên khu vực", icon: UserSearch, link: "/search" },
+  { name: "Liên hệ", icon: ShieldAlert, link: "/contact" },
+  // { name: "Câu hỏi thường gặp", icon: MessageCircleQuestionMark, link: "/question" },
 ];
 
 function MenuList({ items }) {
@@ -144,6 +136,8 @@ function Footer() {
         </p>
 
         <div className="flex items-center gap-2">
+          <p>Theo dõi thêm tại: </p>
+
           {socialArr.map((item) => (
             <Link
               key={item.name}

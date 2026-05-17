@@ -26,11 +26,11 @@ const navList = [
   { name: "Di động", icon: <CardSim size={18} />, href: "/sim" },
   { name: "Chữ ký số", icon: <PencilLine size={18} />, href: "/digitalSignature" },
   { name: "Tin tức", icon: <Clock4 size={18} />, href: "/news" },
+  { name: "Liên hệ", icon: <PhoneCall size={18} />, href: "/contact" },
 ];
 
 const actionList = [
   { name: "Tuyển dụng", href: "/tuyendung", icon: <UserPlus size={16} /> },
-  { name: "Liên hệ", icon: <PhoneCall size={18} />, href: "/contact" },
 ];
 
 
@@ -98,7 +98,7 @@ const Header = () => {
 
             <div className="relative" ref={menuRef}>
               <button
-                className="p-2 rounded-full hover:bg-grayLow hover:scale-105 transition-transform flex items-center justify-center"
+                className="lg:hidden block  p-2 rounded-full hover:bg-grayLow hover:scale-105 transition-transform flex items-center justify-center"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -149,7 +149,7 @@ const Header = () => {
                         <Link
                           onClick={() => setIsMenuOpen(false)}
                           href={action.href}
-                          className="flex items-center px-4 py-3 text-sm hover:bg-grayLow "
+                          className="lg:hidden flex items-center px-4 py-3 text-sm hover:bg-grayLow "
                         >
                           {action.icon && <span className="mr-3">{action.icon}</span>}
                           {action.name}

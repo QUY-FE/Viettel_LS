@@ -13,6 +13,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import ContactModal from "#/components/common/ContactModal";
+import Loading from "./Loading";
 
 const fetchTelevisionProducts = async () => {
   const res = await axios.get("http://localhost:5000/api/products");
@@ -102,10 +103,6 @@ const TelevisionPage = () => {
       <div className="max-w-7xl mx-auto min-h-screen  px-2 lg:px-4">
         <Breadcrumb items={breadcrumbItems} />
 
-        <h1 className="my-4 font-bold text-3xl text-center">
-          Truyền Hình{" "}
-          <span className="font-magistral text-primary"> Viettel</span> TV360
-        </h1>
         <h3 className="my-4 font-bold text-xl">
           Giới thiệu dịch vụ truyền hình Viettel TV
         </h3>
@@ -263,16 +260,12 @@ const TelevisionPage = () => {
           </Swiper>
         </div>
 
-        {isLoading && (
-          <div className="text-center py-8">Đang tải dữ liệu...</div>
-        )}
+        {isLoading && <Loading />}
         {isError && (
-          <div className="text-center text-red-500 py-8">
-            {error?.message || "Có lỗi xảy ra khi tải dữ liệu."}
+          <div className="text-center text-primary py-8">
+            <p>Ops, Có lỗi xảy ra khi tải dữ liệu.</p>
           </div>
         )}
-
-        <button className="cst_btn-primary mb-10">Tư vấn miễn phí</button>
 
         <h3 className="my-4 font-bold text-xl">
           Các câu hỏi thường gặp về dịch vụ truyền hình Viettel TV

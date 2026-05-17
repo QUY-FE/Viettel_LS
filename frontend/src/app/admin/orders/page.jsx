@@ -1,5 +1,5 @@
 "use client";
-import { useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -34,7 +34,6 @@ const OrdersPage = () => {
     queryFn: fetchOrders,
   });
 
-
   const deleteMutation = useMutation({
     mutationFn: deleteOrder,
     onSuccess: () => {
@@ -50,14 +49,19 @@ const OrdersPage = () => {
     if (!confirmed) return;
 
     deleteMutation.mutate(id);
-
   };
   if (isLoading) {
-    return <div className="p-6 text-gray-600 font-medium">Đang tải dữ liệu...</div>;
+    return (
+      <div className="p-6 text-gray-600 font-medium">Đang tải dữ liệu...</div>
+    );
   }
 
   if (isError) {
-    return <div className="p-6 text-red-600 font-medium">Đã xảy ra lỗi khi tải danh sách đơn hàng.</div>;
+    return (
+      <div className="text-center text-primary py-8">
+        <p>Ops, Có lỗi xảy ra khi tải dữ liệu.</p>
+      </div>
+    );
   }
 
   return (
@@ -81,20 +85,23 @@ const OrdersPage = () => {
             </thead>
             <tbody className="divide-y divide-gray-100 text-sm text-gray-700">
               {Orders.map((order, index) => (
-                <tr key={order._id} className="hover:bg-gray-50 transition-colors">
+                <tr
+                  key={order._id}
+                  className="hover:bg-gray-50 transition-colors"
+                >
                   <td className="p-4 font-medium text-gray-900">{index + 1}</td>
                   <td className="p-4">{order.name}</td>
                   <td className="p-4">{order.problem}</td>
                   <td className="p-4">{order.createdAt}</td>
-                  
+
                   <td className="p-4">
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-medium ${
                         order.status === "Hoàn thành"
                           ? "bg-green-100 text-green-700"
                           : order.status === "Đang chờ xử lý"
-                          ? "bg-yellow-100 text-yellow-700"
-                          : "bg-red-100 text-red-700"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : "bg-red-100 text-red-700"
                       }`}
                     >
                       {order.status}
@@ -108,7 +115,10 @@ const OrdersPage = () => {
                       >
                         <MdVisibility size={18} />
                       </button>
-                      <Link href={`/admin/orders/${order._id}`} className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors">
+                      <Link
+                        href={`/admin/orders/${order._id}`}
+                        className="p-2 text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                      >
                         <MdEdit size={18} />
                       </Link>
                       <button
@@ -161,8 +171,8 @@ const OrdersPage = () => {
                     selectedOrder.status === "Hoàn thành"
                       ? "text-green-600"
                       : selectedOrder.status === "Đang xử lý"
-                      ? "text-blue-600"
-                      : "text-red-600"
+                        ? "text-blue-600"
+                        : "text-red-600"
                   }`}
                 >
                   {selectedOrder.status}

@@ -7,8 +7,6 @@ import { useQuery } from "@tanstack/react-query";
 import useDebounce from "../../hooks/useDebounce";
 import Link from "next/link";
 
-
-
 const fetchProducts = async () => {
   const { data } = await axios.get("http://localhost:5000/api/products");
   return data.data;
@@ -162,31 +160,28 @@ const SearchDropdown = ({ isSearchOpen, setIsSearchOpen }) => {
                   <span className="text-sm">Đang tìm kiếm...</span>
                 </div>
               ) : isError ? (
-                <div className="text-red-500 text-sm py-4">
-                  Không thể kết nối đến máy chủ.
+                <div className="text-center text-primary py-8">
+                  <p>Ops, Có lỗi xảy ra khi tải dữ liệu.</p>
                 </div>
               ) : filteredProducts.length > 0 ? (
                 <ul className="flex flex-col gap-1">
                   {filteredProducts.map((product) => (
                     <li key={product._id}>
                       <Link
-                      href={
-                            product.category === "internet"
-                              ? `/internet/${product.slug}`
-                              : product.category === "television"
-                                ? `/television/${product.slug}`
-                                : "#"
-                          }
+                        href={
+                          product.category === "internet"
+                            ? `/internet/${product.slug}`
+                            : product.category === "television"
+                              ? `/television/${product.slug}`
+                              : "#"
+                        }
                         onClick={handleCloseSearch}
                         className="w-full text-left px-3 py-2.5 rounded-lg hover:bg-gray-50 text-gray-800 transition-colors flex items-center justify-between group"
                       >
                         <span className="font-medium group-hover:text-primary transition-colors">
                           {product.nameProduct}
                         </span>
-                        <span
-                          
-                          className="text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                        >
+                        <span className="text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
                           Xem chi tiết →
                         </span>
                       </Link>
@@ -202,7 +197,7 @@ const SearchDropdown = ({ isSearchOpen, setIsSearchOpen }) => {
                 </div>
               )}
             </>
-          ) : null }
+          ) : null}
         </div>
 
         <div className="px-6 py-3 border-t border-grayLow flex justify-end bg-gray-50 rounded-b-xl">

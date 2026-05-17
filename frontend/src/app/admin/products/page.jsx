@@ -33,7 +33,7 @@ const ProductsPage = () => {
   const debouncedSearchTerm = useDebounce(searchTerm, 800);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 8;
-  
+
   const {
     data: products = [],
     isLoading,
@@ -43,7 +43,7 @@ const ProductsPage = () => {
     queryKey: ["products"],
     queryFn: fetchProducts,
   });
-  
+
   const deleteMutation = useMutation({
     mutationFn: deleteProduct,
     onSuccess: () => {
@@ -110,8 +110,8 @@ const ProductsPage = () => {
 
   if (isError) {
     return (
-      <div className="flex items-center justify-center h-40">
-        <p className="text-red-500">{error?.message || "Có lỗi xảy ra"}</p>
+      <div className="text-center text-primary py-8">
+        <p>Ops, Có lỗi xảy ra khi tải dữ liệu.</p>
       </div>
     );
   }
